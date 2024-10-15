@@ -36,6 +36,88 @@
   box-sizing: border-box;
 }
 
+.hero-img {
+  width: 100%;  
+  height: auto; 
+}
+@media (max-width: 576px) {
+  .navbar-brand span {
+      font-size: 1.5rem; 
+  }
+  
+  .navbar-brand img {
+      max-width: 40px; 
+  }
+}
+/*test_video.html*/
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; 
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.card {
+  border: none; 
+}
+
+.card-body {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  text-align: center; 
+  padding: 1rem; 
+}
+
+.card-title {
+  margin: 0; 
+}
+
+.card-body h6 {
+  margin-top: 0.5rem; 
+}
+
+/*best_school.html*/
+@media (max-width: 768px) {
+  .section-title {
+      text-align: center; 
+  }
+
+  .row.pt-2.pb-4 {
+      text-align: center; 
+  }
+
+  .img-fluid {
+      max-width: 100%; 
+      height: auto; 
+  }
+}
+
+
+/*popular_class.html*/
+
+.card-title {
+  font-size: 1.25rem;
+  color: #333333; 
+  font-weight: bold;
+ 
+}
+
+
+
+
+
+  
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -312,7 +394,17 @@ legend {
     font-size: calc(1.275rem + 0.3vw) ;
   }
 }
+@media (max-width: 768px) {
+  legend {
+    font-size: calc(1rem + 0.5vw); /* Adjust for smaller screens */
+  }
+}
 
+@media (max-width: 480px) {
+  legend {
+    font-size: calc(0.875rem + 0.7vw); /* Further adjust for very small screens */
+  }
+}
 progress {
   vertical-align: baseline;
 }
@@ -7139,6 +7231,24 @@ button.bg-dark:focus {
   }
 }
 
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
 @media (min-width: 992px) {
   .flex-lg-row {
     flex-direction: row !important;
@@ -9878,6 +9988,12 @@ a.text-dark:hover, a.text-dark:focus {
       grid-template-columns: 1fr; /* Stack videos vertically on smaller screens */
   }
 }
+@media (max-width: 576px) {
+  body {
+    font-size: 12px; /* Adjust font size for mobile devices */
+  }
+}
+
 .video-container {
   display: flex;
   justify-content: center;

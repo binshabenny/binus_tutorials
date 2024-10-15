@@ -58,16 +58,22 @@ def classes(request):
 def video_lectures(request):
     return render(request,'video.html')
 
-def contact(request):
+from django.shortcuts import render, redirect
+from django.core.mail import send_mail
+from django.contrib import messages
+import logging
 
+logger = logging.getLogger(__name__)
+
+def contact(request):
     form = ContactForm()
 
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
+            # Save form data to the database
             form.save() 
 
-            
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
@@ -75,20 +81,24 @@ def contact(request):
 
             email_subject = f"New Contact Form Submission: {subject}"
             email_message = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
-            from_email = email  # Use the user's email as the sender
+            from_email = 'binuscomputer@gmail.com' 
 
-            send_mail(
-                email_subject,          # Subject
-                email_message,          # Message
-                from_email,             # From (user's email)
-                ['binuscomputer@gmail.com'],  # To (replace with your own email)
-                fail_silently=False,
-            )
+            try:
+                send_mail(
+                    email_subject,          
+                    email_message,          
+                    from_email,             
+                    ['binuscomputer@gmail.com'],
+                    fail_silently=False,
+                )
 
-            messages.success(request, 'Thank you for contacting us!') # Saves the form data to the database
-            return redirect('contact')  # Redirect after successful form submission
+                messages.success(request, 'Thank you for contacting us!')
+                return redirect('contact') 
+            except Exception as e:
+                logger.error(f"Error sending email: {e}")
+                messages.error(request, 'Failed to send email. Please try again later.')
         else:
-            print(form.errors)  # For debugging purposes, show form errors in console
+            print(form.errors)  
 
     return render(request, 'contact.html', {'form': form})
 

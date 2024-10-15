@@ -3,29 +3,29 @@
 
 <div class="container-fluid pt-5">
     <div class="container">
-        <div>
+        <div class="text-center pb-2">
+            <p class="section-title px-5">
+                <span class="px-2">Video Lectures</span>
+            </p>
+            <h1 class="mb-4">Popular Classes</h1>
         </div>
-      <div class="text-center pb-2">
-        <p class="section-title px-5">
-          <span class="px-2"> Video Lectures</span>
-        </p>
-        <h1 class="mb-4">Popular Classes</h1>
-      </div>
-      <div class="row">
-        {% for i in videos|slice:":4" %}
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                {% video i.video 'small' %}
-                <div class="card-body">
-                    <h5 class="card-title">{{ i.title }}</h5>
-                    <h6 class="card-title"style="color: #ff5733;">{{ i.chapter_title }}</h6> <!-- Optional: Display video title -->
+        <div class="row">
+            {% for i in videos|slice:":4" %}
+            <div class="col-12 col-md-6 mb-4"> <!-- Full width on mobile, half on medium and larger -->
+                <div class="card h-100"> <!-- Added h-100 class to fill height -->
+                    <div class="video-container"> <!-- Responsive video container -->
+                        {% video i.video 'small' %}
+                    </div>
+                    <div class="card-body p-2"> <!-- Reduced padding -->
+                        <h5 class="card-title">{{ i.title }}</h5>
+                        <h6 class="card-title" style="color: #ff5733;">{{ i.chapter_title }}</h6>
+                    </div>
                 </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
-        <p>For more videos visit Our YouTube Channel <a href="https://www.youtube.com/@BinusMalayalamTutorials" target="_blank"><span>Binus Malayalam Tutorial</span></a></p>
-      </div>
+        <p class="text-center mt-4">For more videos visit Our YouTube Channel <a href="https://www.youtube.com/@BinusMalayalamTutorials" target="_blank"><span>Binus Malayalam Tutorial</span></a></p>
     </div>
-</div>  
+</div>
 
-  
+

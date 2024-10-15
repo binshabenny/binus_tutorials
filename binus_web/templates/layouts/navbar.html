@@ -1,37 +1,27 @@
 {% load static %}
 <div class="container-fluid bg-light position-relative shadow">
-    <nav
-      class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0 px-lg-5"
-    >
-      <a
-        href=""
-        class="navbar-brand font-weight-bold text-secondary"
-        style="font-size: 50px"
-      >
-     
-      <img src="{% static 'img/logo_new.png' %}" alt="Binus Tutorials Logo">
-      <span class="text-primary">Binus Tutorials</span>
+  <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 px-0 px-lg-5">
+      <a href="" class="navbar-brand d-flex align-items-center">
+          <img src="{% static 'img/logo_new.png' %}" alt="Binus Tutorials Logo" class="img-fluid mr-2" style="max-width: 50px;"> <!-- Adjust size of logo -->
+          <span class="text-primary" style="font-size: 2rem;">Binus Tutorials</span> <!-- Using relative font size -->
       </a>
       <button
-        type="button"
-        class="navbar-toggler"
-        data-toggle="collapse"
-        data-target="#navbarCollapse"
+          type="button"
+          class="navbar-toggler"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
       >
-        <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        class="collapse navbar-collapse justify-content-between"
-        id="navbarCollapse"
-      >
-        <div class="navbar-nav font-weight-bold mx-auto py-0">
-          <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-          <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-          <a href="{% url 'class' %}" class="nav-item nav-link">Classes</a>
-          <a href="{% url 'video' %}" class="nav-item nav-link">Video Lectures</a>
-          <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
-        </div>
-        <a href="{% url 'join_now' %}" class="btn btn-primary px-4">Join Class</a>
+      <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+          <div class="navbar-nav font-weight-bold mx-auto py-0">
+              <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
+              <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
+              <a href="{% url 'class' %}" class="nav-item nav-link">Classes</a>
+              <a href="{% url 'video' %}" class="nav-item nav-link">Video Lectures</a>
+              <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
+          </div>
+          <a href="{% url 'join_now' %}" class="btn btn-primary px-4">Join Class</a>
       </div>
-    </nav>
-  </div>
+  </nav>
+</div>

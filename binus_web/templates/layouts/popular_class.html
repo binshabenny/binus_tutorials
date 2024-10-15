@@ -11,7 +11,7 @@
       </div>
       <div class="row">
         {% for tutorial in tutorials %}
-        <div class="col-lg-4 mb-5">
+        <div class="col-12 col-sm-6 col-md-4 mb-5">
           <div class="card border-0 bg-light shadow-sm pb-2">
             <img class="card-img-top mb-2" src="{{ tutorial.image.url }}" alt="{{ tutorial.title }}" />
             <div class="card-body text-center">
@@ -46,7 +46,7 @@
                 <div class="col-6 py-1">{{ tutorial.tuition_fee }} / Month</div>
               </div>
             </div>
-            <a href="{% url 'join_now' %}" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
+            <a href="{% url 'join_now'  %}" class="btn btn-primary px-4 mx-auto mb-4">Join Now</a>
           </div>
         </div>
         {% endfor %}
