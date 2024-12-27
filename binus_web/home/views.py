@@ -13,6 +13,7 @@ import ssl
 
 
 
+
 razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
 
 
@@ -65,15 +66,17 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-def contact(request):
+
+def contact_view(request):
     form = ContactForm()
 
     if request.method == "POST":
+        print("POST data:", request.POST)
         form = ContactForm(request.POST)
         if form.is_valid():
             # Save form data to the database
             form.save() 
-
+            
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             subject = form.cleaned_data['subject']
@@ -101,6 +104,7 @@ def contact(request):
             print(form.errors)  
 
     return render(request, 'contact.html', {'form': form})
+
 
 
 def video(request):

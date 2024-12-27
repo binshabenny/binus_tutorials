@@ -1,15 +1,16 @@
 {% extends 'layouts/blank_layout.html' %}
 {% load static %}
+{% load embed_video_tags %}
 
 {% block navbar %}
 {% include 'layouts/navbar.html'%}
 {% endblock %}
 
 {% block hero_content %}
-<div class="container-fluid bg-primary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 400px">
-        <h3 class="display-3 font-weight-bold text-white">{% block title %}Video Lectures{% endblock %}</h3>
-        <div class="d-inline-flex text-white">
+<div class="container-fluid bg-primary mb-5 video-hero">
+    <div class="d-flex flex-column align-items-center justify-content-center text-center p-4 video-hero-content" style="min-height: 50vh;">
+        <h3 class="display-4 font-weight-bold text-white">{% block title %}Video Lectures{% endblock %}</h3>
+        <div class="d-inline-flex text-white video-hero-links">
             <p class="m-0"><a class="text-white" href="">{% block sub_title %}Home{% endblock %}</a></p>
             <p class="m-0 px-2">/</p>
             <p class="m-0">{% block head %}Video Classes{% endblock %}</p>
@@ -17,6 +18,7 @@
     </div>
 </div>
 {% endblock %}
+
 {% block general %}
 {% load embed_video_tags %}
 <h1 class="text-center">YouTube Classes</h1>

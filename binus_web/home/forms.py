@@ -37,5 +37,10 @@ class ContactForm(ModelForm):
         if len(name) < 3:
             raise forms.ValidationError("Name must be at least 3 characters long.")
         return name
+    def clean_phonenumber(self):
+        phonenumber = self.cleaned_data.get('phonenumber')
+        if not phonenumber.isdigit() or len(phonenumber) != 10:
+            raise forms.ValidationError("Phone number must be a valid 10-digit number.")
+        return phonenumber
 
     

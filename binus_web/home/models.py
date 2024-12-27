@@ -49,7 +49,7 @@ class BookSeat(models.Model):
 
 class Contact(models.Model):
      name = models.CharField(max_length=100)
-     email = models.EmailField(max_length=100)
+     email = models.EmailField(max_length=100, unique=True)
      phonenumber =models.CharField(max_length=12)
      subject =models.CharField(max_length=100)
      message = models.TextField(max_length=255)

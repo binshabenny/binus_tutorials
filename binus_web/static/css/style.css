@@ -51,20 +51,65 @@
 }
 /*test_video.html*/
 
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%; 
-  height: 0;
-  overflow: hidden;
+.video-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: none; /* Customize further as needed */
+  background: #f8f9fa; /* Light background color */
+  min-width: 300px; 
+  max-width: 350px; 
 }
 
-.video-container iframe {
+.video-card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.video-card-title {
+  font-size: 1.25rem;
+  color: #333333;
+  font-weight: bold;
+  text-align: center;
+  margin: 0.5rem 0;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  background: #000;
+  margin-bottom: 1rem;
+}
+
+.video-container iframe,
+.video-container embed,
+.video-container object {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  border: none;
 }
+
+@media (max-width: 768px) {
+  .video-container {
+      padding-bottom: 75%;
+  }
+}
+
+@media (max-width: 576px) {
+  .video-card-body {
+      text-align: center;
+      padding: 0.25rem;
+  }
+}
+
+
 
 .card {
   border: none; 
@@ -105,18 +150,84 @@
 
 /*popular_class.html*/
 
-.card-title {
+.popular-card .card-title {
   font-size: 1.25rem;
   color: #333333; 
   font-weight: bold;
- 
 }
 
+.popular-card {
+  min-width: 260px; 
+  max-width: 100px; 
+}
 
+.popular-card .card-body {
+  flex: 1 1 auto;
+  overflow: hidden;
+  white-space: normal; /* Ensures the text wraps properly */
+}
 
+.popular-card .card-text {
+  font-size: 0.9rem; /* Slightly smaller font */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: keep-all;
+}
+/*video_test.html*/
 
+.video-hero {
+  background-color: #007bff; /* Adjust the color as needed */
+  margin-bottom: 2rem; /* Adds some space below the hero section */
+}
 
-  
+.video-hero-content {
+  min-height: 50vh; /* Makes sure the hero section takes up at least 50% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.video-hero-content h3 {
+  font-size: 3rem; /* Default size for larger screens */
+}
+
+.video-hero-links {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Adds some space between the elements */
+}
+
+.video-hero-links a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.video-hero-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .video-hero-content h3 {
+      font-size: 2rem; /* Smaller font size for mobile devices */
+  }
+
+  .video-hero-content {
+      padding: 1rem; /* Less padding for smaller screens */
+  }
+
+  .video-hero-links {
+      flex-direction: column; /* Stack the links vertically on smaller screens */
+      gap: 0;
+  }
+}
+/*video_test.html card */
+
+/*end of video_test.html card */ 
+
+ /*end css*/ 
 
 html {
   font-family: sans-serif;
