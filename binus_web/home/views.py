@@ -59,14 +59,13 @@ def classes(request):
 def video_lectures(request):
     return render(request,'video.html')
 
+
 from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.contrib import messages
 import logging
 
 logger = logging.getLogger(__name__)
-
-
 def contact_view(request):
     form = ContactForm()
 
@@ -95,15 +94,18 @@ def contact_view(request):
                     fail_silently=False,
                 )
 
-                messages.success(request, 'Thank you for contacting us!')
+                messages.error({'success': True, 'message': 'Thank you for contacting us!'})
                 return redirect('contact') 
             except Exception as e:
                 logger.error(f"Error sending email: {e}")
-                messages.error(request, 'Failed to send email. Please try again later.')
+                messages.error(request, "There was an error submitting the form. Please try again.")
         else:
             print(form.errors)  
 
     return render(request, 'contact.html', {'form': form})
+
+
+
 
 
 
