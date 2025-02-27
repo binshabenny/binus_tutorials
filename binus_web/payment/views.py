@@ -4,6 +4,9 @@ import razorpay
 from django.shortcuts import render
 from django.conf import settings
 import logging
+import json
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 logger = logging.getLogger(__name__)
 
 razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
@@ -11,6 +14,28 @@ razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZOR
 
 # Initialize Razorpay client
 #razorpay_client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID, settings.RAZORPAY_KEY_SECRET))
+@csrf_exempt
+def razorpay_webhook(request):
+    try:
+        data = json.loads(request.body)
+        event = data.get("event")
+
+        if event == "payment.captured":
+            payment_id = data["payload"]["payment"]["entity"]["id"]
+            order_id = data["payload"]["payment"]["entity"]["order_id"]
+
+            # Find the corresponding booking
+            booking = BookSeat.objects.filter(order_id=order_id).first()
+            if booking:
+                booking.status = True
+                booking.payment_id = payment_id
+                booking.save()
+                return JsonResponse({"status": "success"}, status=200)
+        
+        return JsonResponse({"status": "ignored"}, status=400)
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
 
 def payment_page(request, order_id, fee):
     # Retrieve the booking based on the order_id
@@ -24,6 +49,7 @@ def payment_page(request, order_id, fee):
         'booking': booking,  # Pass the booking object to access name and email
     }
     return render(request, 'payment.html',context)
+
 
 def payment_success(request, order_id, fee):
     payment_id = request.GET.get('payment_id')
@@ -65,6 +91,7 @@ def payment_failed(request, order_id, fee):
         'fee': fee,
         'booking': booking,
         'message': 'Payment was not successful. Please try again or contact support.'
-    }
+    } 
     
     return render(request, 'payment_failed.html', context)
+   

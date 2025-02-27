@@ -10,19 +10,24 @@
             <h1 class="mb-4">Popular Classes</h1>
         </div>
         <div class="row">
-            {% for i in videos|slice:":4" %}
-            <div class="col-12 col-md-6 mb-4"> <!-- Full width on mobile, half on medium and larger -->
-                <div class="card h-100"> <!-- Added h-100 class to fill height -->
-                    <div class="video-container"> <!-- Responsive video container -->
-                        {% video i.video 'small' %}
-                    </div>
-                    <div class="card-body p-2"> <!-- Reduced padding -->
-                        <h5 class="card-title">{{ i.title }}</h5>
-                        <h6 class="card-title" style="color: #ff5733;">{{ i.chapter_title }}</h6>
-                    </div>
+            <div class="video-grid">
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/RI7kO00e06U?si=VMgqP5CLjp86WLtw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Plus Two Computer Science</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/wL0sabn33YY?si=1oqf4O4MJwy7zzgO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Plus One Computer Science</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/hwj-bbX8ndY?si=1_E2-62qR38NUljy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Plus One Computer Application</p>
+                </div>
+                <div class="video-item">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/BJvtIvsxRu8?si=x71ZSHlX06E461Q5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <p>Plus Two Computer Application</p>
                 </div>
             </div>
-            {% endfor %}
         </div>
         <p class="text-center mt-4">For more videos visit Our YouTube Channel <a href="https://www.youtube.com/@BinusMalayalamTutorials" target="_blank"><span>Binus Malayalam Tutorial</span></a></p>
     </div>
